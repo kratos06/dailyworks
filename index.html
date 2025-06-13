@@ -1070,11 +1070,28 @@
       function selectTab(tab) {
         formState.currentTab = tab;
 
+        // Reset verification state when switching tabs
+        formState.codeSent = false;
+        formState.verificationCode = ["", "", "", "", ""];
+
+        // Clear verification inputs
+        document.querySelectorAll(".verification-input").forEach((input) => {
+          input.value = "";
+        });
+
+        // Reset send code button
+        const sendCodeButton = document.querySelector(".send-code-button");
+        sendCodeButton.textContent = "Send Verification Code";
+        sendCodeButton.classList.remove("sent");
+        sendCodeButton.disabled = false;
+
         // Update tab buttons
         document.querySelectorAll(".tab-button").forEach((btn) => {
           btn.classList.remove("active");
         });
         event.target.classList.add("active");
+
+        updateFormState();
       }
 
       // Send verification code
