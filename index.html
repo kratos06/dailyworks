@@ -1134,22 +1134,24 @@
         }
 
         const button = document.querySelector(".send-code-button");
-        const originalText = button.textContent;
+        const buttonText = button.querySelector("span");
 
         // Show loading state
-        button.textContent = "Sending...";
+        buttonText.textContent = "Sending...";
         button.disabled = true;
 
         // Simulate API call
         setTimeout(() => {
           formState.codeSent = true;
-          button.textContent = "Verification Code Sent";
+          buttonText.textContent = "✓ Verification Code Sent";
           button.classList.add("sent");
 
           // Show success message
           const method =
             formState.currentTab === "phone" ? "phone number" : "email address";
-          alert(`Verification code sent to your ${method}!`);
+
+          // Create a more subtle notification instead of alert
+          showNotification(`Verification code sent to your ${method}!`);
 
           // Focus on first input
           const firstInput = document.querySelector(".verification-input");
@@ -1159,12 +1161,39 @@
 
           // Re-enable button after 30 seconds for resend
           setTimeout(() => {
-            button.textContent = "Resend Verification Code";
+            buttonText.textContent = "Resend Verification Code";
             button.classList.remove("sent");
             button.disabled = false;
             formState.codeSent = false;
           }, 30000);
         }, 1500); // Simulate network delay
+      }
+
+      // Show notification function
+      function showNotification(message) {
+        // Create a temporary notification
+        const notification = document.createElement("div");
+        notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--blue-primary-01);
+                color: white;
+                padding: 12px 20px;
+                border-radius: 6px;
+                font-family: 'SF Pro Text', -apple-system, Roboto, Helvetica, sans-serif;
+                font-size: 14px;
+                z-index: 10000;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            `;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+
+        // Remove after 3 seconds
+        setTimeout(() => {
+          notification.remove();
+        }, 3000);
       }
 
       // Update form state and enable/disable next button
