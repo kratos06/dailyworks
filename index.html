@@ -3,85 +3,1257 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dailyworks</title>
+    <title>Start Your Lofty Blast - MLS Verification</title>
     <style>
-      body {
-        font-family:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      :root {
+        --Black-05: #fff;
+        --solid-black-fafbfd-lighter: #fafbfd;
+        --solid-black-797-e-8-b: #797e8b;
+        --solid-black-ffffff: #fff;
+        --solid-black-202437: #202437;
+        --solid-black-c-6-c-8-d-1: #c6c8d1;
+        --Divider-Bg-F2F2F2-line: #f2f2f2;
+        --solid-black-a-0-a-3-af: #a0a3af;
+        --solid-black-f-6-f-7-fb: #f6f7fb;
+        --solid-theme-3-b-5-cde-primary: #3b5cde;
+        --blue-primary-01: #3b5cde;
+        --solid-black-ebecf-1: #ebecf1;
+        --solid-black-000000: #000;
+        --black-primary-01: #1a273e;
+        --Black-04: #c6c8d1;
+        --Solid-Black-1A273E: #1a273e;
+      }
+
+      * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          "SF Pro Text",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Helvetica,
+          sans-serif;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 20px;
       }
 
-      .container {
-        background: white;
-        padding: 2rem;
+      .mobile-container {
+        width: 375px;
+        height: 812px;
+        background: #fff;
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+        position: relative;
+        overflow: hidden;
         border-radius: 12px;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        max-width: 500px;
-        width: 90%;
       }
 
-      .title {
-        color: #333;
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        font-weight: 700;
+      /* Status Bar */
+      .status-bar {
+        width: 100%;
+        height: 90px;
+        background: #fff;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 29px;
       }
 
-      .subtitle {
-        color: #666;
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-      }
-
-      .status {
-        background: #10b981;
-        color: white;
-        padding: 1rem;
-        border-radius: 8px;
+      .status-time {
+        font-family:
+          "SF Pro Text",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 17px;
         font-weight: 600;
-        margin-bottom: 1rem;
+        color: #000;
+        margin-left: 10px;
       }
 
-      .info {
-        color: #666;
-        font-size: 0.9rem;
-        line-height: 1.6;
+      .status-icons {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .signal-icon,
+      .wifi-icon,
+      .battery-icon {
+        width: 20px;
+        height: 12px;
+        background: #000;
+        border-radius: 2px;
+      }
+
+      .battery-icon {
+        width: 25px;
+        height: 12px;
+      }
+
+      /* Header */
+      .header {
+        position: absolute;
+        top: 30px;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        height: 60px;
+      }
+
+      .back-button {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .header-title {
+        flex: 1;
+        text-align: center;
+        font-family:
+          "SF Pro Text",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 17px;
+        font-weight: 500;
+        color: #000;
+        margin-left: -20px;
+      }
+
+      .progress-bar {
+        position: absolute;
+        top: 89px;
+        left: 0;
+        width: 93px;
+        height: 2px;
+        background: var(--blue-primary-01);
+      }
+
+      .divider {
+        position: absolute;
+        top: 89px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: #eee;
+      }
+
+      /* Main Content */
+      .main-content {
+        padding: 20px 15px;
+        margin-top: 90px;
+        height: calc(100% - 90px - 80px);
+        overflow-y: auto;
+      }
+
+      .step-title {
+        color: var(--solid-black-202437);
+        font-family:
+          "SF Pro Text",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 30px;
+        margin-bottom: 30px;
+      }
+
+      .note-container {
+        display: flex;
+        padding: 10px 15px;
+        background: var(--solid-black-fafbfd-lighter);
+        border: 1px solid var(--solid-black-ebecf-1);
+        border-radius: 6px;
+        margin-bottom: 20px;
+      }
+
+      .note-content {
+        flex: 1;
+      }
+
+      .note-title {
+        color: var(--solid-black-797-e-8-b);
+        font-family:
+          "SF Pro Text",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 20px;
+        margin-bottom: 5px;
+      }
+
+      .note-text {
+        color: var(--solid-black-797-e-8-b);
+        font-family:
+          "SF Pro Text",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-label {
+        color: var(--solid-black-202437);
+        font-family:
+          "SF Pro Text",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 150%;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .required {
+        color: #f0454c;
+      }
+
+      .form-description {
+        color: var(--solid-black-a-0-a-3-af);
+        font-family:
+          "SF Pro Text",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 150%;
+        margin-bottom: 10px;
+      }
+
+      .select-wrapper {
+        position: relative;
+        width: 100%;
+      }
+
+      .form-select {
+        width: 100%;
+        height: 40px;
+        padding: 0 40px 0 10px;
+        background: #fff;
+        border: 1px solid var(--solid-black-c-6-c-8-d-1);
+        border-radius: 6px;
+        font-family:
+          "SF Pro Text",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        color: var(--solid-black-202437);
+        appearance: none;
+        cursor: pointer;
+      }
+
+      .form-select:focus {
+        outline: none;
+        border-color: var(--blue-primary-01);
+      }
+
+      .form-select.placeholder {
+        color: var(--solid-black-c-6-c-8-d-1);
+      }
+
+      .select-arrow {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 12px;
+        height: 12px;
+        pointer-events: none;
+      }
+
+      .verification-section {
+        margin-top: 30px;
+      }
+
+      .verification-label {
+        color: var(--solid-black-202437);
+        font-family:
+          "SF Pro Text",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 150%;
+        margin-bottom: 5px;
+        display: block;
+      }
+
+      .verification-description {
+        color: var(--solid-black-a-0-a-3-af);
+        font-family:
+          "SF Pro Text",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 150%;
+        margin-bottom: 10px;
+      }
+
+      .tab-container {
+        width: 100%;
+        height: 36px;
+        background: var(--solid-black-f-6-f-7-fb);
+        border: 1px solid rgba(235, 236, 241, 0.7);
+        border-radius: 20px;
+        padding: 5px;
+        margin-bottom: 30px;
+        display: flex;
+        gap: 5px;
+      }
+
+      .tab-button {
+        flex: 1;
+        height: 26px;
+        border: none;
+        border-radius: 15px;
+        background: transparent;
+        color: var(--solid-black-797-e-8-b);
+        font-family:
+          "SF Pro Text",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .tab-button.active {
+        background: #fff;
+        color: var(--blue-primary-01);
+        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.05);
+      }
+
+      .verification-inputs {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 30px;
+        justify-content: center;
+      }
+
+      .verification-input {
+        width: 57px;
+        height: 64px;
+        border: 1px solid #c6c8cf;
+        border-radius: 6px;
+        background: #fff;
+        text-align: center;
+        font-family:
+          "SF UI Text",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 30px;
+        font-weight: 700;
+        color: var(--black-primary-01);
+      }
+
+      .verification-input:focus {
+        outline: none;
+        border-color: var(--blue-primary-01);
+      }
+
+      .send-code-button {
+        width: 100%;
+        background: none;
+        border: none;
+        color: var(--blue-primary-01);
+        text-align: center;
+        font-family:
+          "SF Pro Text",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 20px;
+        cursor: pointer;
+        margin-bottom: 30px;
+      }
+
+      /* Bottom Button */
+      .bottom-button-container {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background: #fff;
+        border-top: 1px solid var(--Divider-Bg-F2F2F2-line);
+        padding: 10px 15px 30px 15px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .next-button {
+        height: 40px;
+        background: var(--blue-primary-01);
+        border: none;
+        border-radius: 6px;
+        color: #fff;
+        font-family:
+          "SF Pro",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 15px;
+        font-weight: 510;
+        cursor: pointer;
+        opacity: 0.4;
+        transition: opacity 0.2s ease;
+      }
+
+      .next-button.enabled {
+        opacity: 1;
+      }
+
+      .next-button:hover.enabled {
+        background: #2a4bc7;
+      }
+
+      /* Modal Styles */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+        align-items: flex-end;
+        justify-content: center;
+        z-index: 1000;
+      }
+
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      .modal-content {
+        width: 375px;
+        max-height: 742px;
+        background: #fff;
+        border-radius: 10px 10px 0 0;
+        overflow: hidden;
+      }
+
+      .modal-header {
+        padding: 20px 15px 13px 15px;
+        border-bottom: 1px solid var(--solid-black-ebecf-1);
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .modal-back-button {
+        width: 12px;
+        height: 12px;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .modal-title {
+        flex: 1;
+        text-align: center;
+        color: var(--black-primary-01);
+        font-family:
+          "SF Pro Text",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 18px;
+      }
+
+      .modal-save {
+        color: var(--blue-primary-01);
+        font-family:
+          "SF Pro Text",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 18px;
+        cursor: pointer;
+      }
+
+      .modal-search {
+        padding: 15px;
+      }
+
+      .search-input {
+        width: 100%;
+        height: 40px;
+        background: var(--solid-black-f-6-f-7-fb);
+        border: none;
+        border-radius: 6px;
+        padding: 0 15px 0 40px;
+        font-family:
+          "SF UI Text",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 15px;
+        color: var(--solid-black-c-6-c-8-d-1);
+      }
+
+      .search-input:focus {
+        outline: none;
+      }
+
+      .modal-options {
+        padding: 0 15px;
+        max-height: 500px;
+        overflow-y: auto;
+      }
+
+      .option-item {
+        display: flex;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 1px solid var(--Divider-Bg-F2F2F2-line);
+        cursor: pointer;
+      }
+
+      .option-text {
+        flex: 1;
+        color: var(--black-primary-01);
+        font-family:
+          "SF Pro Text",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+
+      .option-radio {
+        width: 20px;
+        height: 20px;
+        border: 1px solid var(--solid-black-c-6-c-8-d-1);
+        border-radius: 50%;
+        position: relative;
+      }
+
+      .option-radio.selected {
+        border-color: var(--blue-primary-01);
+      }
+
+      .option-radio.selected::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        background: var(--blue-primary-01);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 480px) {
+        body {
+          padding: 0;
+        }
+
+        .mobile-container {
+          width: 100vw;
+          height: 100vh;
+          border-radius: 0;
+        }
+      }
+
+      @media (max-width: 375px) {
+        .verification-inputs {
+          gap: 10px;
+        }
+
+        .verification-input {
+          width: 50px;
+          height: 56px;
+          font-size: 24px;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1 class="title">Dailyworks</h1>
-      <p class="subtitle">Your development environment is ready!</p>
-      <div class="status">✅ Server is running successfully</div>
-      <p class="info">
-        This is a basic development setup. You can now start building your
-        project.<br />
-        The server is running and ready for development.
-      </p>
+    <div class="mobile-container">
+      <!-- Status Bar -->
+      <div class="status-bar">
+        <div class="status-time">8:29</div>
+        <div class="status-icons">
+          <div class="signal-icon"></div>
+          <div class="wifi-icon"></div>
+          <div class="battery-icon"></div>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <div class="header">
+        <button class="back-button" onclick="goBack()">
+          <svg
+            width="10"
+            height="18"
+            viewBox="0 0 10 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9 1L1 9.09909L9 17"
+              stroke="black"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <div class="header-title">Start Your Lofty Blast</div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-bar"></div>
+      <div class="divider"></div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <h1 class="step-title">Step 1: Verify your MLS</h1>
+
+        <!-- Note Section -->
+        <div class="note-container">
+          <div class="note-content">
+            <div class="note-title">Note:</div>
+            <div class="note-text">
+              To proceed with purchasing a Zip Code Blast or Listing Blast, we
+              require verification of your MLS credentials. Submitting your
+              active listing details allows us to launch your ads and confirm
+              your identity as the authorized Listing Agent. This step ensures
+              compliance with advertising guidelines and protects the integrity
+              of your listings.
+            </div>
+          </div>
+        </div>
+
+        <!-- MLS Selection -->
+        <div class="form-group">
+          <label class="form-label"
+            >Select your MLS <span class="required">*</span></label
+          >
+          <div class="select-wrapper">
+            <select
+              class="form-select placeholder"
+              id="mlsSelect"
+              onchange="handleMLSChange(this)"
+            >
+              <option value="">Select your MLS</option>
+              <option value="crmls">California Regional MLS (CRMLS)</option>
+              <option value="bmls">Bright MLS (BMLS)</option>
+              <option value="canopy">Canopy MLS</option>
+              <option value="rein">
+                Real Estate Information Network (REIN)
+              </option>
+              <option value="armls">Arizona Regional MLS (ARMLS)</option>
+              <option value="ntreis">
+                North Texas Real Estate Info Systems (NTREIS) -MetroTex and
+                Collin County (CCAR)
+              </option>
+            </select>
+            <svg
+              class="select-arrow"
+              width="12"
+              height="7"
+              viewBox="0 0 12 7"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.0003 6.25492L0.859047 1.14367C0.789203 1.07341 0.75 0.978363 0.75 0.879294C0.75 0.780224 0.789203 0.68518 0.859047 0.614919C0.893908 0.57977 0.935384 0.551872 0.981081 0.532834C1.02678 0.513796 1.07579 0.503994 1.1253 0.503994C1.1748 0.503994 1.22382 0.513796 1.26951 0.532834C1.31521 0.551872 1.35669 0.57977 1.39155 0.614919L6.0003 5.19742L10.609 0.611169C10.6439 0.57602 10.6854 0.548123 10.7311 0.529084C10.7768 0.510046 10.8258 0.500244 10.8753 0.500244C10.9248 0.500244 10.9738 0.510046 11.0195 0.529084C11.0652 0.548123 11.1067 0.57602 11.1415 0.611169C11.2114 0.681429 11.2506 0.776474 11.2506 0.875543C11.2506 0.974613 11.2114 1.06966 11.1415 1.13992L6.0003 6.25492Z"
+                fill="#C6C8D1"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Agent ID Section -->
+        <div class="form-group" id="agentIdSection" style="display: none">
+          <label class="form-label"
+            >Enter Your Agent ID for <span id="selectedMLS">CRMLS</span>
+            <span class="required">*</span></label
+          >
+          <div class="form-description">
+            Add your MLS Agent ID to proceed the verification and produce
+            matching listing data for your IDX website and CRM.
+          </div>
+          <div class="select-wrapper">
+            <select
+              class="form-select placeholder"
+              id="agentIdSelect"
+              onchange="handleAgentIdChange(this)"
+            >
+              <option value="">
+                Enter MLS Subscriber Name, Email or Ag...
+              </option>
+              <option value="chris">
+                Chris Trapani (50846**) - ch***@seren....
+              </option>
+              <option value="brian1">Brian Evans</option>
+              <option value="brian2">Brian Evans</option>
+              <option value="albert">Albert Flores</option>
+            </select>
+            <svg
+              class="select-arrow"
+              width="12"
+              height="7"
+              viewBox="0 0 12 7"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.0003 6.25492L0.859047 1.14367C0.789203 1.07341 0.75 0.978363 0.75 0.879294C0.75 0.780224 0.789203 0.68518 0.859047 0.614919C0.893908 0.57977 0.935384 0.551872 0.981081 0.532834C1.02678 0.513796 1.07579 0.503994 1.1253 0.503994C1.1748 0.503994 1.22382 0.513796 1.26951 0.532834C1.31521 0.551872 1.35669 0.57977 1.39155 0.614919L6.0003 5.19742L10.609 0.611169C10.6439 0.57602 10.6854 0.548123 10.7311 0.529084C10.7768 0.510046 10.8258 0.500244 10.8753 0.500244C10.9248 0.500244 10.9738 0.510046 11.0195 0.529084C11.0652 0.548123 11.1067 0.57602 11.1415 0.611169C11.2114 0.681429 11.2506 0.776474 11.2506 0.875543C11.2506 0.974613 11.2114 1.06966 11.1415 1.13992L6.0003 6.25492Z"
+                fill="#C6C8D1"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Verification Code Section -->
+        <div
+          class="verification-section"
+          id="verificationSection"
+          style="display: none"
+        >
+          <label class="verification-label">Verification Code</label>
+          <div class="verification-description">
+            Click send verification to send a verification code to your phone.
+          </div>
+
+          <div class="tab-container">
+            <button class="tab-button active" onclick="selectTab('phone')">
+              Phone
+            </button>
+            <button class="tab-button" onclick="selectTab('email')">
+              Email
+            </button>
+          </div>
+
+          <div class="verification-inputs">
+            <input
+              type="text"
+              class="verification-input"
+              maxlength="1"
+              onkeyup="handleVerificationInput(this, 0)"
+              onkeydown="handleVerificationKeydown(this, event)"
+            />
+            <input
+              type="text"
+              class="verification-input"
+              maxlength="1"
+              onkeyup="handleVerificationInput(this, 1)"
+              onkeydown="handleVerificationKeydown(this, event)"
+            />
+            <input
+              type="text"
+              class="verification-input"
+              maxlength="1"
+              onkeyup="handleVerificationInput(this, 2)"
+              onkeydown="handleVerificationKeydown(this, event)"
+            />
+            <input
+              type="text"
+              class="verification-input"
+              maxlength="1"
+              onkeyup="handleVerificationInput(this, 3)"
+              onkeydown="handleVerificationKeydown(this, event)"
+            />
+            <input
+              type="text"
+              class="verification-input"
+              maxlength="1"
+              onkeyup="handleVerificationInput(this, 4)"
+              onkeydown="handleVerificationKeydown(this, event)"
+            />
+          </div>
+
+          <button class="send-code-button" onclick="sendVerificationCode()">
+            Send Verification Code
+          </button>
+        </div>
+      </div>
+
+      <!-- Bottom Button -->
+      <div class="bottom-button-container">
+        <button
+          class="next-button"
+          id="nextButton"
+          onclick="proceedToNextStep()"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+
+    <!-- MLS Selection Modal -->
+    <div class="modal-overlay" id="mlsModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="modal-back-button" onclick="closeModal('mlsModal')">
+            <svg
+              width="8"
+              height="12"
+              viewBox="0 0 8 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.8909 12C6.84155 12.0003 6.79262 11.9908 6.74693 11.9722C6.70124 11.9535 6.65969 11.926 6.62465 11.8912L0.733398 6.00015L6.62465 0.109044C6.69491 0.0392022 6.78995 0 6.88902 0C6.98809 0 7.08314 0.0392022 7.1534 0.109044C7.18855 0.143905 7.21644 0.185379 7.23548 0.231075C7.25452 0.276771 7.26432 0.325785 7.26432 0.375288C7.26432 0.424791 7.25452 0.473804 7.23548 0.5195C7.21644 0.565196 7.18855 0.606671 7.1534 0.641531L1.79465 6.00015L7.1534 11.3588C7.20606 11.411 7.24205 11.4777 7.25682 11.5503C7.27158 11.623 7.26447 11.6984 7.23637 11.7671C7.20828 11.8357 7.16046 11.8945 7.09896 11.9359C7.03747 11.9774 6.96506 11.9997 6.8909 12Z"
+                fill="black"
+              />
+            </svg>
+          </button>
+          <div class="modal-title">Select MLS</div>
+          <div class="modal-save">Save</div>
+        </div>
+        <div class="modal-search">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search MLS"
+            oninput="filterMLSOptions(this.value)"
+          />
+        </div>
+        <div class="modal-options" id="mlsOptions">
+          <!-- MLS options will be populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Agent ID Selection Modal -->
+    <div class="modal-overlay" id="agentModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="modal-back-button" onclick="closeModal('agentModal')">
+            <svg
+              width="8"
+              height="12"
+              viewBox="0 0 8 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.8909 12C6.84155 12.0003 6.79262 11.9908 6.74693 11.9722C6.70124 11.9535 6.65969 11.926 6.62465 11.8912L0.733398 6.00015L6.62465 0.109044C6.69491 0.0392022 6.78995 0 6.88902 0C6.98809 0 7.08314 0.0392022 7.1534 0.109044C7.18855 0.143905 7.21644 0.185379 7.23548 0.231075C7.25452 0.276771 7.26432 0.325785 7.26432 0.375288C7.26432 0.424791 7.25452 0.473804 7.23548 0.5195C7.21644 0.565196 7.18855 0.606671 7.1534 0.641531L1.79465 6.00015L7.1534 11.3588C7.20606 11.411 7.24205 11.4777 7.25682 11.5503C7.27158 11.623 7.26447 11.6984 7.23637 11.7671C7.20828 11.8357 7.16046 11.8945 7.09896 11.9359C7.03747 11.9774 6.96506 11.9997 6.8909 12Z"
+                fill="black"
+              />
+            </svg>
+          </button>
+          <div class="modal-title">Agent ID for CRMLS</div>
+          <div class="modal-save">Save</div>
+        </div>
+        <div class="modal-search">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search MLS Membership info"
+            oninput="filterAgentOptions(this.value)"
+          />
+        </div>
+        <div class="modal-options" id="agentOptions">
+          <!-- Agent options will be populated by JavaScript -->
+        </div>
+      </div>
     </div>
 
     <script>
-      console.log("Dailyworks project loaded successfully!");
+      // Form state management
+      let formState = {
+        selectedMLS: "",
+        selectedAgent: "",
+        verificationCode: ["", "", "", "", ""],
+        currentTab: "phone",
+      };
 
-      // Add some basic interactivity
+      // MLS options data
+      const mlsOptions = [
+        { value: "crmls", label: "California Regional MLS (CRMLS)" },
+        { value: "bmls", label: "Bright MLS (BMLS)" },
+        { value: "canopy", label: "Canopy MLS" },
+        { value: "rein", label: "Real Estate Information Network (REIN)" },
+        { value: "armls", label: "Arizona Regional MLS (ARMLS)" },
+        {
+          value: "ntreis",
+          label:
+            "North Texas Real Estate Info Systems (NTREIS) -MetroTex and Collin County (CCAR)",
+        },
+      ];
+
+      // Agent options data
+      const agentOptions = [
+        {
+          value: "email",
+          label: "Email verification",
+          description: "Send verification code to m***a@g***.***",
+        },
+        {
+          value: "brian1",
+          label: "Brian Evans",
+          description: "Send verification code to m***a@g***.***",
+        },
+        {
+          value: "brian2",
+          label: "Brian Evans",
+          description: "Send verification code to m***a@g***.***",
+        },
+        {
+          value: "albert",
+          label: "Albert Flores",
+          description: "Send verification code to m***a@g***.***",
+        },
+      ];
+
+      // Initialize the page
       document.addEventListener("DOMContentLoaded", function () {
-        const status = document.querySelector(".status");
-        status.style.cursor = "pointer";
+        updateFormState();
+        populateMLSOptions();
+        populateAgentOptions();
+      });
 
-        status.addEventListener("click", function () {
-          status.innerHTML = "🎉 Everything is working perfectly!";
-          setTimeout(() => {
-            status.innerHTML = "✅ Server is running successfully";
-          }, 2000);
+      // Handle MLS selection change
+      function handleMLSChange(select) {
+        if (select.value) {
+          select.classList.remove("placeholder");
+          formState.selectedMLS = select.value;
+          document.getElementById("agentIdSection").style.display = "block";
+
+          // Update the label to show selected MLS
+          const selectedOption = mlsOptions.find(
+            (option) => option.value === select.value,
+          );
+          if (selectedOption) {
+            document.getElementById("selectedMLS").textContent =
+              selectedOption.label.split(" ")[0];
+          }
+        } else {
+          select.classList.add("placeholder");
+          formState.selectedMLS = "";
+          document.getElementById("agentIdSection").style.display = "none";
+          document.getElementById("verificationSection").style.display = "none";
+        }
+        updateFormState();
+      }
+
+      // Handle Agent ID selection change
+      function handleAgentIdChange(select) {
+        if (select.value) {
+          select.classList.remove("placeholder");
+          formState.selectedAgent = select.value;
+          document.getElementById("verificationSection").style.display =
+            "block";
+        } else {
+          select.classList.add("placeholder");
+          formState.selectedAgent = "";
+          document.getElementById("verificationSection").style.display = "none";
+        }
+        updateFormState();
+      }
+
+      // Handle verification code input
+      function handleVerificationInput(input, index) {
+        const value = input.value;
+        if (value && /^\d$/.test(value)) {
+          formState.verificationCode[index] = value;
+
+          // Move to next input
+          if (index < 4) {
+            const nextInput = input.parentElement.children[index + 1];
+            nextInput.focus();
+          }
+        } else {
+          formState.verificationCode[index] = "";
+          input.value = "";
+        }
+        updateFormState();
+      }
+
+      // Handle verification code keydown (for backspace)
+      function handleVerificationKeydown(input, event) {
+        const index = Array.from(input.parentElement.children).indexOf(input);
+
+        if (event.key === "Backspace" && !input.value && index > 0) {
+          const prevInput = input.parentElement.children[index - 1];
+          prevInput.focus();
+          prevInput.value = "";
+          formState.verificationCode[index - 1] = "";
+          updateFormState();
+        }
+      }
+
+      // Select verification tab
+      function selectTab(tab) {
+        formState.currentTab = tab;
+
+        // Update tab buttons
+        document.querySelectorAll(".tab-button").forEach((btn) => {
+          btn.classList.remove("active");
         });
+        event.target.classList.add("active");
+      }
+
+      // Send verification code
+      function sendVerificationCode() {
+        // Simulate sending code
+        alert(`Verification code sent to your ${formState.currentTab}!`);
+      }
+
+      // Update form state and enable/disable next button
+      function updateFormState() {
+        const nextButton = document.getElementById("nextButton");
+        const isFormComplete =
+          formState.selectedMLS &&
+          formState.selectedAgent &&
+          formState.verificationCode.every((code) => code !== "");
+
+        if (isFormComplete) {
+          nextButton.classList.add("enabled");
+        } else {
+          nextButton.classList.remove("enabled");
+        }
+      }
+
+      // Proceed to next step
+      function proceedToNextStep() {
+        const nextButton = document.getElementById("nextButton");
+        if (nextButton.classList.contains("enabled")) {
+          alert("Proceeding to Step 2!");
+          // Here you would navigate to the next step
+        }
+      }
+
+      // Go back
+      function goBack() {
+        alert("Going back to previous screen");
+        // Here you would navigate back
+      }
+
+      // Modal functions
+      function openModal(modalId) {
+        document.getElementById(modalId).classList.add("active");
+      }
+
+      function closeModal(modalId) {
+        document.getElementById(modalId).classList.remove("active");
+      }
+
+      // Populate MLS options in modal
+      function populateMLSOptions() {
+        const container = document.getElementById("mlsOptions");
+        container.innerHTML = "";
+
+        mlsOptions.forEach((option) => {
+          const optionElement = document.createElement("div");
+          optionElement.className = "option-item";
+          optionElement.onclick = () =>
+            selectMLSOption(option.value, option.label);
+
+          optionElement.innerHTML = `
+                    <div class="option-text">${option.label}</div>
+                    <div class="option-radio ${formState.selectedMLS === option.value ? "selected" : ""}"></div>
+                `;
+
+          container.appendChild(optionElement);
+        });
+      }
+
+      // Populate Agent options in modal
+      function populateAgentOptions() {
+        const container = document.getElementById("agentOptions");
+        container.innerHTML = "";
+
+        agentOptions.forEach((option) => {
+          const optionElement = document.createElement("div");
+          optionElement.className = "option-item";
+          optionElement.onclick = () =>
+            selectAgentOption(option.value, option.label);
+
+          optionElement.innerHTML = `
+                    <div style="flex: 1;">
+                        <div class="option-text">${option.label}</div>
+                        <div style="color: var(--solid-black-a-0-a-3-af); font-size: 14px; line-height: 18px;">${option.description}</div>
+                    </div>
+                    <div class="option-radio ${formState.selectedAgent === option.value ? "selected" : ""}"></div>
+                `;
+
+          container.appendChild(optionElement);
+        });
+      }
+
+      // Select MLS option from modal
+      function selectMLSOption(value, label) {
+        formState.selectedMLS = value;
+        document.getElementById("mlsSelect").value = value;
+        document.getElementById("mlsSelect").classList.remove("placeholder");
+        closeModal("mlsModal");
+        handleMLSChange(document.getElementById("mlsSelect"));
+      }
+
+      // Select Agent option from modal
+      function selectAgentOption(value, label) {
+        formState.selectedAgent = value;
+        document.getElementById("agentIdSelect").value = value;
+        document
+          .getElementById("agentIdSelect")
+          .classList.remove("placeholder");
+        closeModal("agentModal");
+        handleAgentIdChange(document.getElementById("agentIdSelect"));
+      }
+
+      // Filter MLS options
+      function filterMLSOptions(searchTerm) {
+        const container = document.getElementById("mlsOptions");
+        const items = container.querySelectorAll(".option-item");
+
+        items.forEach((item) => {
+          const text = item
+            .querySelector(".option-text")
+            .textContent.toLowerCase();
+          if (text.includes(searchTerm.toLowerCase())) {
+            item.style.display = "flex";
+          } else {
+            item.style.display = "none";
+          }
+        });
+      }
+
+      // Filter Agent options
+      function filterAgentOptions(searchTerm) {
+        const container = document.getElementById("agentOptions");
+        const items = container.querySelectorAll(".option-item");
+
+        items.forEach((item) => {
+          const text = item
+            .querySelector(".option-text")
+            .textContent.toLowerCase();
+          if (text.includes(searchTerm.toLowerCase())) {
+            item.style.display = "flex";
+          } else {
+            item.style.display = "none";
+          }
+        });
+      }
+
+      // Add click handlers to select elements to open modals
+      document.addEventListener("DOMContentLoaded", function () {
+        const mlsSelect = document.getElementById("mlsSelect");
+        const agentSelect = document.getElementById("agentIdSelect");
+
+        mlsSelect.addEventListener("click", function (e) {
+          e.preventDefault();
+          openModal("mlsModal");
+        });
+
+        agentSelect.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (formState.selectedMLS) {
+            openModal("agentModal");
+          }
+        });
+      });
+
+      // Simulate verification code filling for demo
+      function fillVerificationCode() {
+        const inputs = document.querySelectorAll(".verification-input");
+        const codes = ["2", "2", "2", "2", "2"];
+
+        inputs.forEach((input, index) => {
+          setTimeout(() => {
+            input.value = codes[index];
+            formState.verificationCode[index] = codes[index];
+            updateFormState();
+          }, index * 200);
+        });
+      }
+
+      // Add demo button for testing (remove in production)
+      document.addEventListener("DOMContentLoaded", function () {
+        // Auto-select options for demo purposes
+        setTimeout(() => {
+          // Auto-select CRMLS
+          formState.selectedMLS = "crmls";
+          document.getElementById("mlsSelect").value = "crmls";
+          document.getElementById("mlsSelect").classList.remove("placeholder");
+          document.getElementById("agentIdSection").style.display = "block";
+
+          setTimeout(() => {
+            // Auto-select Chris Trapani
+            formState.selectedAgent = "chris";
+            document.getElementById("agentIdSelect").value = "chris";
+            document
+              .getElementById("agentIdSelect")
+              .classList.remove("placeholder");
+            document.getElementById("verificationSection").style.display =
+              "block";
+
+            setTimeout(() => {
+              fillVerificationCode();
+            }, 1000);
+          }, 500);
+        }, 1000);
       });
     </script>
   </body>
