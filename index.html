@@ -418,6 +418,26 @@
         line-height: 20px;
         cursor: pointer;
         margin-bottom: 30px;
+        padding: 10px;
+        border-radius: 6px;
+        transition: background-color 0.2s ease;
+      }
+
+      .send-code-button:hover {
+        background-color: rgba(59, 92, 222, 0.1);
+      }
+
+      .send-code-button:active {
+        background-color: rgba(59, 92, 222, 0.2);
+      }
+
+      .send-code-button.sent {
+        color: var(--solid-black-797-e-8-b);
+        cursor: default;
+      }
+
+      .send-code-button.sent:hover {
+        background-color: transparent;
       }
 
       /* Bottom Button */
