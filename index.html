@@ -1079,8 +1079,42 @@
 
       // Send verification code
       function sendVerificationCode() {
-        // Simulate sending code
-        alert(`Verification code sent to your ${formState.currentTab}!`);
+        if (formState.codeSent) {
+          return; // Prevent multiple sends
+        }
+
+        const button = document.querySelector(".send-code-button");
+        const originalText = button.textContent;
+
+        // Show loading state
+        button.textContent = "Sending...";
+        button.disabled = true;
+
+        // Simulate API call
+        setTimeout(() => {
+          formState.codeSent = true;
+          button.textContent = "Verification Code Sent";
+          button.classList.add("sent");
+
+          // Show success message
+          const method =
+            formState.currentTab === "phone" ? "phone number" : "email address";
+          alert(`Verification code sent to your ${method}!`);
+
+          // Focus on first input
+          const firstInput = document.querySelector(".verification-input");
+          if (firstInput) {
+            firstInput.focus();
+          }
+
+          // Re-enable button after 30 seconds for resend
+          setTimeout(() => {
+            button.textContent = "Resend Verification Code";
+            button.classList.remove("sent");
+            button.disabled = false;
+            formState.codeSent = false;
+          }, 30000);
+        }, 1500); // Simulate network delay
       }
 
       // Update form state and enable/disable next button
