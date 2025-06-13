@@ -1120,15 +1120,31 @@
       // Update form state and enable/disable next button
       function updateFormState() {
         const nextButton = document.getElementById("nextButton");
+        const isCodeComplete = formState.verificationCode.every(
+          (code) => code !== "",
+        );
         const isFormComplete =
           formState.selectedMLS &&
           formState.selectedAgent &&
-          formState.verificationCode.every((code) => code !== "");
+          formState.codeSent &&
+          isCodeComplete;
 
         if (isFormComplete) {
           nextButton.classList.add("enabled");
+          formState.codeVerified = true;
         } else {
           nextButton.classList.remove("enabled");
+        }
+
+        // Update send code button visibility based on agent selection
+        const sendCodeButton = document.querySelector(".send-code-button");
+        if (formState.selectedAgent && !formState.codeSent) {
+          sendCodeButton.style.display = "block";
+          sendCodeButton.textContent = "Send Verification Code";
+        } else if (formState.codeSent && !isCodeComplete) {
+          sendCodeButton.style.display = "block";
+        } else if (isCodeComplete) {
+          sendCodeButton.style.display = "none";
         }
       }
 
