@@ -1,16 +1,22 @@
 {
-  "name": "code",
-  "version": "1.0.0",
-  "description": "A development project",
-  "main": "index.js",
+  "name": "builder-nextjs-app",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "python3 -m http.server 3000 2>/dev/null || python -m http.server 3000 2>/dev/null || npx serve -s . -l 3000",
-    "build": "echo 'Build complete - static files ready'",
-    "start": "npm run dev"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5"
+  }
 }
