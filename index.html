@@ -1174,15 +1174,19 @@
           nextButton.classList.remove("enabled");
         }
 
-        // Update send code button visibility based on agent selection
+        // Update send code button visibility and text
         const sendCodeButton = document.querySelector(".send-code-button");
-        if (formState.selectedAgent && !formState.codeSent) {
-          sendCodeButton.style.display = "block";
-          sendCodeButton.textContent = "Send Verification Code";
-        } else if (formState.codeSent && !isCodeComplete) {
-          sendCodeButton.style.display = "block";
-        } else if (isCodeComplete) {
-          sendCodeButton.style.display = "none";
+        if (sendCodeButton) {
+          if (formState.selectedAgent) {
+            sendCodeButton.style.display = "block";
+            if (!formState.codeSent) {
+              sendCodeButton.textContent = "Send Verification Code";
+              sendCodeButton.disabled = false;
+              sendCodeButton.classList.remove("sent");
+            }
+          } else {
+            sendCodeButton.style.display = "none";
+          }
         }
       }
 
