@@ -1,0 +1,16 @@
+{
+  "name": "code",
+  "version": "1.0.0",
+  "description": "A development project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "python3 -m http.server 3000 2>/dev/null || python -m http.server 3000 2>/dev/null || npx serve -s . -l 3000",
+    "build": "echo 'Build complete - static files ready'",
+    "start": "npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {}
+}
