@@ -1318,31 +1318,11 @@
         });
       }
 
-      // Add demo button for testing (remove in production)
+      // Initialize send code button state
       document.addEventListener("DOMContentLoaded", function () {
-        // Auto-select options for demo purposes
-        setTimeout(() => {
-          // Auto-select CRMLS
-          formState.selectedMLS = "crmls";
-          document.getElementById("mlsSelect").value = "crmls";
-          document.getElementById("mlsSelect").classList.remove("placeholder");
-          document.getElementById("agentIdSection").style.display = "block";
-
-          setTimeout(() => {
-            // Auto-select Chris Trapani
-            formState.selectedAgent = "chris";
-            document.getElementById("agentIdSelect").value = "chris";
-            document
-              .getElementById("agentIdSelect")
-              .classList.remove("placeholder");
-            document.getElementById("verificationSection").style.display =
-              "block";
-
-            setTimeout(() => {
-              fillVerificationCode();
-            }, 1000);
-          }, 500);
-        }, 1000);
+        const sendCodeButton = document.querySelector(".send-code-button");
+        sendCodeButton.style.display = "none"; // Hide initially until agent is selected
+        updateFormState();
       });
     </script>
   </body>
