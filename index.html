@@ -1000,6 +1000,21 @@
         updateFormState();
         populateMLSOptions();
         populateAgentOptions();
+
+        // For demo purposes, auto-select options to show the Send Code button
+        setTimeout(() => {
+          // Auto-select CRMLS
+          const mlsSelect = document.getElementById("mlsSelect");
+          mlsSelect.value = "crmls";
+          handleMLSChange(mlsSelect);
+
+          setTimeout(() => {
+            // Auto-select Chris Trapani
+            const agentSelect = document.getElementById("agentIdSelect");
+            agentSelect.value = "chris";
+            handleAgentIdChange(agentSelect);
+          }, 500);
+        }, 500);
       });
 
       // Handle MLS selection change
