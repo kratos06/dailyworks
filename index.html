@@ -403,9 +403,9 @@
 
       .send-code-button {
         width: 100%;
-        background: none;
+        background: var(--blue-primary-01);
         border: none;
-        color: var(--blue-primary-01);
+        color: #fff;
         text-align: center;
         font-family:
           "SF Pro Text",
@@ -414,30 +414,44 @@
           Helvetica,
           sans-serif;
         font-size: 15px;
-        font-weight: 400;
+        font-weight: 500;
         line-height: 20px;
         cursor: pointer;
         margin-bottom: 30px;
-        padding: 10px;
+        padding: 12px;
         border-radius: 6px;
-        transition: background-color 0.2s ease;
+        transition: all 0.2s ease;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .send-code-button:hover {
-        background-color: rgba(59, 92, 222, 0.1);
+        background-color: #2a4bc7;
+        transform: translateY(-1px);
       }
 
       .send-code-button:active {
-        background-color: rgba(59, 92, 222, 0.2);
+        background-color: #1e3ba0;
+        transform: translateY(0);
+      }
+
+      .send-code-button:disabled {
+        background-color: var(--solid-black-c-6-c-8-d-1);
+        cursor: not-allowed;
+        transform: none;
       }
 
       .send-code-button.sent {
-        color: var(--solid-black-797-e-8-b);
+        background-color: var(--solid-black-a-0-a-3-af);
+        color: #fff;
         cursor: default;
       }
 
       .send-code-button.sent:hover {
-        background-color: transparent;
+        background-color: var(--solid-black-a-0-a-3-af);
+        transform: none;
       }
 
       /* Bottom Button */
