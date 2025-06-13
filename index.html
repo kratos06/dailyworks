@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dailyworks</title>
+    <style>
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .container {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 500px;
+        width: 90%;
+      }
+
+      .title {
+        color: #333;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .subtitle {
+        color: #666;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+
+      .status {
+        background: #10b981;
+        color: white;
+        padding: 1rem;
+        border-radius: 8px;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .info {
+        color: #666;
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Dailyworks</h1>
+      <p class="subtitle">Your development environment is ready!</p>
+      <div class="status">✅ Server is running successfully</div>
+      <p class="info">
+        This is a basic development setup. You can now start building your
+        project.<br />
+        The server is running and ready for development.
+      </p>
+    </div>
+
+    <script>
+      console.log("Dailyworks project loaded successfully!");
+
+      // Add some basic interactivity
+      document.addEventListener("DOMContentLoaded", function () {
+        const status = document.querySelector(".status");
+        status.style.cursor = "pointer";
+
+        status.addEventListener("click", function () {
+          status.innerHTML = "🎉 Everything is working perfectly!";
+          setTimeout(() => {
+            status.innerHTML = "✅ Server is running successfully";
+          }, 2000);
+        });
+      });
+    </script>
+  </body>
+</html>
