@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "mock-server": "node mock-server/server.js",
+    "dev:full": "concurrently \"npm run mock-server\" \"npm run dev\""
   },
   "dependencies": {
     "next": "14.2.5",
@@ -17,6 +19,10 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "concurrently": "^9.1.2",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "json-server": "^1.0.0-beta.3",
     "typescript": "^5"
   }
 }

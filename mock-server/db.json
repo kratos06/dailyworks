@@ -1,0 +1,275 @@
+{
+  "mls_providers": [
+    {
+      "id": "crmls",
+      "name": "California Regional MLS (CRMLS)",
+      "code": "CRMLS",
+      "region": "California",
+      "active": true
+    },
+    {
+      "id": "bmls",
+      "name": "Bright MLS (BMLS)",
+      "code": "BMLS",
+      "region": "Mid-Atlantic",
+      "active": true
+    },
+    {
+      "id": "canopy",
+      "name": "Canopy MLS",
+      "code": "CANOPY",
+      "region": "Southeast",
+      "active": true
+    },
+    {
+      "id": "rein",
+      "name": "Real Estate Information Network (REIN)",
+      "code": "REIN",
+      "region": "Texas",
+      "active": true
+    },
+    {
+      "id": "armls",
+      "name": "Arizona Regional MLS (ARMLS)",
+      "code": "ARMLS",
+      "region": "Arizona",
+      "active": true
+    },
+    {
+      "id": "ntreis",
+      "name": "North Texas Real Estate Info Systems (NTREIS) -MetroTex and Collin County (CCAR)",
+      "code": "NTREIS",
+      "region": "North Texas",
+      "active": true
+    }
+  ],
+  "agents": [
+    {
+      "id": "agent_001",
+      "mlsId": "crmls",
+      "agentId": "50846**",
+      "name": "Chris Trapani",
+      "email": "ch***@seren....",
+      "phone": "+1-555-0123",
+      "verified": true,
+      "verificationMethod": "email"
+    },
+    {
+      "id": "agent_002",
+      "mlsId": "crmls",
+      "agentId": "60123**",
+      "name": "Brian Evans",
+      "email": "b***@realty....",
+      "phone": "+1-555-0124",
+      "verified": false,
+      "verificationMethod": "phone"
+    },
+    {
+      "id": "agent_003",
+      "mlsId": "crmls",
+      "agentId": "70456**",
+      "name": "Albert Flores",
+      "email": "a***@homes....",
+      "phone": "+1-555-0125",
+      "verified": true,
+      "verificationMethod": "email"
+    }
+  ],
+  "listings": [
+    {
+      "id": "listing_001",
+      "price": "$475,000",
+      "address": "7858 Truxton Ave, Los Angeles, CA 90045",
+      "beds": "3",
+      "baths": "2",
+      "sqft": "1,244",
+      "image": "https://cdn.builder.io/api/v1/image/assets%2Fe253410a68864f0aaefd9114f63e501c%2Fb6bdbcdd6b0a42dc9b8710c1c974da4d?format=webp&width=800",
+      "provider": "Listing Provided By Dawn Kayano of Coldwell Banker Pacific Prop.",
+      "agentId": "agent_001",
+      "mlsId": "crmls",
+      "zipCode": "90045",
+      "status": "active",
+      "listingDate": "2024-06-01",
+      "description": "Beautiful 3-bedroom home in prime Los Angeles location"
+    },
+    {
+      "id": "listing_002",
+      "price": "$525,000",
+      "address": "1234 Ocean Blvd, Santa Monica, CA 90401",
+      "beds": "4",
+      "baths": "3",
+      "sqft": "1,650",
+      "image": "https://cdn.builder.io/api/v1/image/assets%2Fe253410a68864f0aaefd9114f63e501c%2F68a927bf09034e0a8ef0e7f56bd0e9cc?format=webp&width=800",
+      "provider": "Listing Provided By Sarah Johnson of Century 21 Beachside",
+      "agentId": "agent_002",
+      "mlsId": "crmls",
+      "zipCode": "90401",
+      "status": "active",
+      "listingDate": "2024-06-05",
+      "description": "Stunning oceanfront property with panoramic views"
+    },
+    {
+      "id": "listing_003",
+      "price": "$695,000",
+      "address": "567 Beverly Dr, Beverly Hills, CA 90210",
+      "beds": "2",
+      "baths": "2",
+      "sqft": "1,100",
+      "image": "https://cdn.builder.io/api/v1/image/assets%2Fe253410a68864f0aaefd9114f63e501c%2Fb6bdbcdd6b0a42dc9b8710c1c974da4d?format=webp&width=800",
+      "provider": "Listing Provided By Michael Chen of Luxury Homes Realty",
+      "agentId": "agent_003",
+      "mlsId": "crmls",
+      "zipCode": "90210",
+      "status": "active",
+      "listingDate": "2024-06-10",
+      "description": "Luxury condo in the heart of Beverly Hills"
+    }
+  ],
+  "packages": [
+    {
+      "id": "zipcode_blast",
+      "name": "Zip Code Blast",
+      "type": "zipcode",
+      "price": 79,
+      "period": "week",
+      "description": "Capture buyer leads across your chosen ZIP code with wide-reaching ads that keep you top-of-mind in your local market.",
+      "features": [
+        "Wide ZIP code coverage",
+        "Facebook and Instagram ads",
+        "Lead capture forms",
+        "Performance analytics"
+      ]
+    },
+    {
+      "id": "listing_blast",
+      "name": "Listing Blast",
+      "type": "listing",
+      "price": 79,
+      "period": "week",
+      "description": "Highlight one property with a targeted ad campaign that drives high-intent buyers directly to your listing.",
+      "features": [
+        "Single property focus",
+        "High-quality ad creatives",
+        "Targeted audience",
+        "Direct listing traffic"
+      ]
+    }
+  ],
+  "campaign_durations": [
+    {
+      "id": "1week",
+      "label": "1 Week",
+      "weeks": 1,
+      "estimatedViews": 4,
+      "progress": 40
+    },
+    {
+      "id": "2weeks",
+      "label": "2 Weeks",
+      "weeks": 2,
+      "estimatedViews": 33,
+      "progress": 60
+    },
+    {
+      "id": "3weeks",
+      "label": "3 Weeks",
+      "weeks": 3,
+      "estimatedViews": 240,
+      "progress": 75
+    },
+    {
+      "id": "4weeks",
+      "label": "4 Weeks",
+      "weeks": 4,
+      "estimatedViews": 1000,
+      "progress": 100
+    }
+  ],
+  "zipcodes": [
+    {
+      "code": "53202",
+      "city": "Milwaukee",
+      "state": "WI",
+      "county": "Milwaukee County",
+      "population": 15420,
+      "medianIncome": 45000,
+      "active": true
+    },
+    {
+      "code": "90045",
+      "city": "Los Angeles",
+      "state": "CA",
+      "county": "Los Angeles County",
+      "population": 42350,
+      "medianIncome": 75000,
+      "active": true
+    },
+    {
+      "code": "90210",
+      "city": "Beverly Hills",
+      "state": "CA",
+      "county": "Los Angeles County",
+      "population": 8965,
+      "medianIncome": 125000,
+      "active": true
+    }
+  ],
+  "users": [
+    {
+      "id": "user_001",
+      "firstName": "Alexander",
+      "lastName": "Alexander",
+      "email": "Alexander@lofty.com",
+      "phone": "+1-555-0100",
+      "agentId": "agent_001",
+      "verified": true
+    }
+  ],
+  "payment_methods": [
+    {
+      "id": "pm_001",
+      "userId": "user_001",
+      "type": "credit_card",
+      "name": "Credit & Debit Cards",
+      "accountHolderName": "Danny Gray",
+      "accountNumber": "*** **** **** 1235",
+      "expirationDate": "06/25",
+      "isDefault": true,
+      "active": true
+    }
+  ],
+  "billing_addresses": [
+    {
+      "id": "addr_001",
+      "userId": "user_001",
+      "countryRegion": "United States",
+      "address": "John Doe, 456 Elm Street, Suite 3, Los Angeles, CA 90001, USA",
+      "isDefault": true
+    }
+  ],
+  "campaigns": [
+    {
+      "id": "campaign_001",
+      "userId": "user_001",
+      "packageId": "zipcode_blast",
+      "targetType": "zipcode",
+      "targetValue": "53202",
+      "duration": "4weeks",
+      "paymentMode": "onetime",
+      "status": "active",
+      "createdAt": "2024-06-15T10:00:00Z",
+      "totalCost": 79,
+      "taxes": 6.79
+    }
+  ],
+  "verification_codes": [
+    {
+      "id": "vc_001",
+      "agentId": "agent_001",
+      "code": "12345",
+      "method": "email",
+      "expiresAt": "2024-06-15T11:00:00Z",
+      "used": false
+    }
+  ]
+}
